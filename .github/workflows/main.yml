@@ -34,19 +34,19 @@ jobs:
           push: true
           tags: johnheo81/back:latest
 
-    deploy:
-      name: deploy
-      runs-on: ubuntu-latest
-      needs: build
-      steps:
-        - name: run ssh
-          uses: appleboy/ssh-action@v1
-          with:
-            host: 121.140.125.176
-            username: test
-            password: qwer1234
-            port: 22
-            script: |
-              docker pull johnheo81/back:latest || true
-              docker rm -f back 2>/dev/null || true
-              docker run -d --name back -p 8080:8080 --pull=always johnheo/back:latest
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: run ssh
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 121.140.125.176
+          username: test
+          password: qwer1234
+          port: 22
+          script: |
+            docker pull johnheo81/back:latest || true
+            docker rm -f back 2>/dev/null || true
+            docker run -d --name back -p 8080:8080 --pull=always johnheo/back:latest
