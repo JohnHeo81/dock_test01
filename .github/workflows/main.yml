@@ -40,12 +40,12 @@ jobs:
     needs: build
     steps:
       - name: run ssh
-        uses: JohnHeo81/ssh-action@v1
+        uses: appleboy/ssh-action@v1
         with:
           host: 121.140.125.176
           username: test
           password: qwer1234
-          port: 22
+          port: 121
           script: |
             docker pull johnheo81/back:latest || true
             docker rm -f back 2>/dev/null || true
