@@ -40,7 +40,7 @@ jobs:
     needs: build
     steps:
       - name: run ssh
-        uses: appleboy/ssh-action@v1
+        uses: johnheo81/ssh-action@v1
         with:
           host: 121.140.125.176
           username: test
