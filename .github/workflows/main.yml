@@ -15,4 +15,12 @@ jobs:
           password: qwer1234
           port: 121
           script: |
-            echo test > /tmp/test
+            rm -rf ./demo30
+            git clone https://github.com/JohnHeo81/dock_test01
+            cd ./dock_test01
+            chmod 755 ./gradlew
+            ./gradlew bootJar
+            docker rm -f back
+            docker image prune -f
+            docker build --tag JohnHeo81/back:latest .
+            docker run -d --name back -p 8080:8080 JohnHeo81/back:latest
