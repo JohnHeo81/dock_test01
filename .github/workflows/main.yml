@@ -3,8 +3,8 @@ on:
   push:
     branches: [main]
 jobs:
-  deploy:
-    name: deploy
+  build:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,7 +32,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: johnheo81/back:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/back:latest
 
   deploy:
     name: deploy
@@ -49,4 +49,6 @@ jobs:
           script: |
             docker pull johnheo81/back:latest || true
             docker rm -f back 2>/dev/null || true
-            docker run -d --name back -p 8080:8080 --pull=always johnheo/back:latest
+            docker run -d --name back -p 8080:8080 --pull=always johnheo81/back:latest
+
+
