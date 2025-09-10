@@ -22,5 +22,5 @@ jobs:
             ./gradlew bootJar
             docker rm -f back
             docker image prune -f
-            docker build --tag JohnHeo81/back:latest .
-            docker run -d --name back -p 8080:8080 JohnHeo81/back:latest
+            docker build --tag johnheo81/back:latest .
+            docker run -d --name back -p 8080:8080 johnheo81/back:latest
