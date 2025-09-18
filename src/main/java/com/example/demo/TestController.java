@@ -1,4 +1,4 @@
-package com.example.demo30;
+package com.example.demo;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @GetMapping("/test")
     public ResponseEntity test() {
-        return ResponseEntity.ok("테스트16");
+        return ResponseEntity.ok("테스트17");
     }
 
     @GetMapping("/health")
